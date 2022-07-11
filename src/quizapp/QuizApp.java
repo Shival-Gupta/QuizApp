@@ -1,21 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package quizapp;
 
-/**
- *
- * @author sgupt
- */
-public class QuizApp {
+public class QuizApp extends javax.swing.JFrame {
+    
+    LoginWindow loginWindow = new LoginWindow();
+    Home homeWindow = new Home();
+    SignUpWindow signUpWindow = new SignUpWindow();
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        LoginWindow loginWindow = new LoginWindow();
-        loginWindow.setVisible(true);
+        QuizApp app = new QuizApp();
+        app.loginWindow.setVisible(true);
     }
     
 }

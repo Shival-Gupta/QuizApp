@@ -1,5 +1,6 @@
 package quizapp;
 
+import java.awt.Toolkit;
 import java.sql.*;
 import java.lang.String;
 import javax.swing.JOptionPane;
@@ -8,7 +9,7 @@ import javax.swing.JOptionPane;
  *
  * @author sgupt
  */
-public class LoginWindow extends javax.swing.JFrame {
+public class LoginWindow extends QuizApp {
 
     
     public LoginWindow() {
@@ -22,10 +23,13 @@ public class LoginWindow extends javax.swing.JFrame {
             System.out.println("Database Connected!");
         } catch (Exception e) {
             System.out.println("Database Connection Unsuccesfull!");
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "<Html>Database connection unsuccesfull,<BR>Restart the program or contact developer.</HTML>", "Database Connection Unsuccesfull", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
 //        JOptionPane.showMessageDialog(null, "");
     }
-    Home homeWindow = new Home();
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -178,7 +182,7 @@ public class LoginWindow extends javax.swing.JFrame {
         );
         loginBtnLayout.setVerticalGroup(
             loginBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBtnLayout.createSequentialGroup()
+            .addGroup(loginBtnLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(loginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -247,23 +251,31 @@ public class LoginWindow extends javax.swing.JFrame {
         
         String sql = "select * from users where UserID= ? AND Password= ?";
         
-        try{
+        try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/quizapp", "root", "");
             PreparedStatement ps= con.prepareStatement(sql);
             ps.setString(1, uid);
             ps.setString(2, pwd);
+            ResultSet rs= ps.executeQuery();
+            if(rs.next()) {
+                dispose();
+                homeWindow.setVisible(true);
+                //this.setVisible(false);
+                System.out.println("\nLogin Succesfull!!"+"\tID: "+uid+"\tPWD: "+pwd);
+            }
+            
+            else {
+                System.out.println("\nUnsuccesfull Login!!"+"\tID: "+uid+"\tPWD: "+pwd);
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(null, "<Html>Invalid username or password !<BR>Please try again.</HTML>", "Unsuccessful Login", JOptionPane.ERROR_MESSAGE);
+            }
         }
         catch (Exception e) {
-            System.out.println("SQL Connection Unsuccesfull!");
-        }
-        if(uid.equals("user") && pwd.equals("0000")){
-            homeWindow.setVisible(true);
-            this.setVisible(false);
-            System.out.println("\nLogin Succesfull!!"+"\tID: "+uid+"\tPWD: "+pwd);
-        }
-        else{
-            System.out.println("\nUnsuccesfull Login!!"+"\tID: "+uid+"\tPWD: "+pwd);
+            System.out.println("Database Connection Unsuccesfull!");
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "<Html>Database connection unsuccesfull,<BR>Restart the program or contact developer.</HTML>", "Database Connection Unsuccesfull", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
     }//GEN-LAST:event_loginBtnMouseClicked
 
