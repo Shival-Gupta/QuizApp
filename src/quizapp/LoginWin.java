@@ -2,34 +2,61 @@ package quizapp;
 
 import java.awt.Toolkit;
 import java.sql.*;
-import java.lang.String;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author sgupt
- */
-public class LoginWindow extends QuizApp {
+public class LoginWin extends QuizApp {
 
     
-    public LoginWindow() {
+    ResultSet loginRS;
+    
+    
+    public LoginWin() {
+        checkConnection();
         initComponents();
-            
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/quizapp", "root", "");
-            PreparedStatement ps= con.prepareStatement("select * from users");
-            ResultSet rs= ps.executeQuery();
-            System.out.println("Database Connected!");
-        } catch (Exception e) {
-            System.out.println("Database Connection Unsuccesfull!");
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "<Html>Database connection unsuccesfull,<BR>Restart the program or contact developer.</HTML>", "Database Connection Unsuccesfull", JOptionPane.ERROR_MESSAGE);
-            System.exit(0);
-        }
-//        JOptionPane.showMessageDialog(null, "");
     }
     
+    private boolean tryLogin(String uid, String pwd){
+        boolean loginStatus = false;
+        
+        try {
+            sql = "select * from users where (UserID= ? OR Mail= ?) AND Password= ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, uid);
+            ps.setString(2, uid);
+            ps.setString(3, pwd);
+            loginRS = ps.executeQuery();
+            loginStatus = loginRS.next();
+        }
+        catch (Exception e) {
+            System.out.println("Database not connected!");
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "<Html>Database connection unsuccesfull,<BR>"
+                    + "Restart the program or contact developer.</HTML>", 
+                    "Database not connected", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        }
+        
+        return loginStatus;
+    }
+    
+    private void fetchLoginDetails(){
+        try {
+            name = loginRS.getString("Name");
+            sex = loginRS.getString("Sex");
+            dob = loginRS.getString("DOB");
+            mail = loginRS.getString("Mail");
+            state = loginRS.getString("State");
+            country = loginRS.getString("Country");
+            highScore = loginRS.getInt("HighScore");
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginWin.class.getName()).log(Level.SEVERE, null, ex);
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "<Html>Try Again!<BR>"+ex+"</HTML>", 
+                    "Fetching Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -47,8 +74,9 @@ public class LoginWindow extends QuizApp {
         btnPanel = new javax.swing.JPanel();
         loginBtn = new javax.swing.JPanel();
         loginLabel = new javax.swing.JLabel();
-        btn2Panel = new javax.swing.JPanel();
-        forgetBtn = new javax.swing.JLabel();
+        optionPanel = new javax.swing.JPanel();
+        signUpPrompt = new javax.swing.JLabel();
+        r2signUpBtn = new javax.swing.JLabel();
         aboutPanel = new javax.swing.JPanel();
         Disclaimer = new javax.swing.JLabel();
 
@@ -94,8 +122,8 @@ public class LoginWindow extends QuizApp {
         idLabel.setBackground(new java.awt.Color(60, 63, 66));
         idLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         idLabel.setForeground(new java.awt.Color(242, 242, 242));
-        idLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        idLabel.setText("Username:");
+        idLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        idLabel.setText("Username / Email:");
 
         idField.setBackground(new java.awt.Color(242, 242, 242));
         idField.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -110,7 +138,7 @@ public class LoginWindow extends QuizApp {
         pwdLabel.setBackground(new java.awt.Color(60, 63, 66));
         pwdLabel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         pwdLabel.setForeground(new java.awt.Color(242, 242, 242));
-        pwdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pwdLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         pwdLabel.setText("Password:");
 
         pwdField.setBackground(new java.awt.Color(242, 242, 242));
@@ -129,7 +157,7 @@ public class LoginWindow extends QuizApp {
                 .addGap(6, 6, 6)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pwdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(pwdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,12 +184,24 @@ public class LoginWindow extends QuizApp {
         btnPanel.setForeground(new java.awt.Color(242, 242, 242));
 
         loginBtn.setBackground(new java.awt.Color(60, 63, 66));
-        loginBtn.setForeground(new java.awt.Color(60, 63, 66));
+        loginBtn.setForeground(new java.awt.Color(242, 242, 242));
         loginBtn.setMaximumSize(new java.awt.Dimension(155, 30));
         loginBtn.setMinimumSize(new java.awt.Dimension(155, 30));
         loginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                loginBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                loginBtnMouseReleased(evt);
             }
         });
 
@@ -190,15 +230,27 @@ public class LoginWindow extends QuizApp {
 
         btnPanel.add(loginBtn);
 
-        btn2Panel.setBackground(new java.awt.Color(34, 43, 53));
-        btn2Panel.setForeground(new java.awt.Color(242, 242, 242));
+        optionPanel.setBackground(new java.awt.Color(34, 43, 53));
+        optionPanel.setForeground(new java.awt.Color(242, 242, 242));
 
-        forgetBtn.setBackground(new java.awt.Color(60, 63, 66));
-        forgetBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        forgetBtn.setForeground(new java.awt.Color(242, 242, 242));
-        forgetBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        forgetBtn.setText("Forgot Password");
-        btn2Panel.add(forgetBtn);
+        signUpPrompt.setBackground(new java.awt.Color(60, 63, 66));
+        signUpPrompt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        signUpPrompt.setForeground(new java.awt.Color(242, 242, 242));
+        signUpPrompt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        signUpPrompt.setText("Don't have an account yet?");
+        optionPanel.add(signUpPrompt);
+
+        r2signUpBtn.setBackground(new java.awt.Color(60, 63, 66));
+        r2signUpBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        r2signUpBtn.setForeground(new java.awt.Color(104, 181, 248));
+        r2signUpBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        r2signUpBtn.setText("Sign Up");
+        r2signUpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                r2signUpBtnMouseClicked(evt);
+            }
+        });
+        optionPanel.add(r2signUpBtn);
 
         aboutPanel.setBackground(new java.awt.Color(34, 43, 53));
         aboutPanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -215,9 +267,9 @@ public class LoginWindow extends QuizApp {
         bodyLayout.setHorizontalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+            .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 342, Short.MAX_VALUE)
             .addComponent(btnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(btn2Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(optionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(aboutPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         bodyLayout.setVerticalGroup(
@@ -229,7 +281,7 @@ public class LoginWindow extends QuizApp {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(optionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                 .addComponent(aboutPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -245,37 +297,23 @@ public class LoginWindow extends QuizApp {
     }//GEN-LAST:event_idFieldActionPerformed
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
-        String uid, pwd;
-        uid = idField.getText();
+        uid = idField.getText().trim();
         pwd = new String(pwdField.getPassword());
         
-        String sql = "select * from users where UserID= ? AND Password= ?";
-        
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/quizapp", "root", "");
-            PreparedStatement ps= con.prepareStatement(sql);
-            ps.setString(1, uid);
-            ps.setString(2, pwd);
-            ResultSet rs= ps.executeQuery();
-            if(rs.next()) {
-                dispose();
-                homeWindow.setVisible(true);
-                //this.setVisible(false);
-                System.out.println("\nLogin Succesfull!!"+"\tID: "+uid+"\tPWD: "+pwd);
-            }
+        if(tryLogin(uid, pwd)) {
+            System.out.println("\nLogin Succesfull!!"+"\tUser: "+uid);
             
-            else {
-                System.out.println("\nUnsuccesfull Login!!"+"\tID: "+uid+"\tPWD: "+pwd);
-                Toolkit.getDefaultToolkit().beep();
-                JOptionPane.showMessageDialog(null, "<Html>Invalid username or password !<BR>Please try again.</HTML>", "Unsuccessful Login", JOptionPane.ERROR_MESSAGE);
-            }
+            fetchLoginDetails();
+            
+            dispose();
+            homeWindow.setVisible(true);    
         }
-        catch (Exception e) {
-            System.out.println("Database Connection Unsuccesfull!");
+        else {
+            System.out.println("\nUnsuccesfull Login!!"+"\tUser: "+uid);
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "<Html>Database connection unsuccesfull,<BR>Restart the program or contact developer.</HTML>", "Database Connection Unsuccesfull", JOptionPane.ERROR_MESSAGE);
-            System.exit(0);
+            JOptionPane.showMessageDialog(null, "<Html>Invalid username or password !<BR>"
+                    + "Please try again.</HTML>", 
+                    "Unsuccessful Login", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginBtnMouseClicked
 
@@ -283,9 +321,32 @@ public class LoginWindow extends QuizApp {
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdFieldActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
+        loginBtn.setBackground(new java.awt.Color(26, 28, 29));
+    }//GEN-LAST:event_loginBtnMouseEntered
+
+    private void loginBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseExited
+        loginBtn.setBackground(new java.awt.Color(60, 63, 66));
+    }//GEN-LAST:event_loginBtnMouseExited
+
+    private void loginBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseReleased
+        loginBtn.setBackground(new java.awt.Color(60, 63, 66));
+    }//GEN-LAST:event_loginBtnMouseReleased
+
+    private void loginBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMousePressed
+        loginBtn.setBackground(new java.awt.Color(17, 18, 19));
+    }//GEN-LAST:event_loginBtnMousePressed
+
+    private void r2signUpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_r2signUpBtnMouseClicked
+        uid = idField.getText().trim();
+        pwd = new String(pwdField.getPassword());
+        this.setVisible(false);
+        signUpWindow.setVisible(true);
+        signUpWindow.usernameField.setText(uid);
+        signUpWindow.passwordField.setText(pwd);
+        
+    }//GEN-LAST:event_r2signUpBtnMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -300,41 +361,42 @@ public class LoginWindow extends QuizApp {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginWindow().setVisible(true);
+                new LoginWin().setVisible(true);
             }
         });
     }
-
+    // <editor-fold defaultstate="collapsed" desc="Variable declaration">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Disclaimer;
     private javax.swing.JPanel aboutPanel;
     private javax.swing.JPanel body;
-    private javax.swing.JPanel btn2Panel;
     private javax.swing.JPanel btnPanel;
-    private javax.swing.JLabel forgetBtn;
-    private javax.swing.JTextField idField;
+    public javax.swing.JTextField idField;
     private javax.swing.JLabel idLabel;
     private javax.swing.JPanel inputPanel;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel loginBtn;
     private javax.swing.JLabel loginLabel;
-    private javax.swing.JPasswordField pwdField;
+    private javax.swing.JPanel optionPanel;
+    public javax.swing.JPasswordField pwdField;
     private javax.swing.JLabel pwdLabel;
+    private javax.swing.JLabel r2signUpBtn;
+    private javax.swing.JLabel signUpPrompt;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
+    // </editor-fold>
 }

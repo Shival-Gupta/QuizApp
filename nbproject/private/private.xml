@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sgupt/Documents/NetBeansProjects/QuizApp/src/quizapp/SignUpWindow.java</file>
             <file>file:/C:/Users/sgupt/Documents/NetBeansProjects/QuizApp/src/quizapp/QuizApp.java</file>
-            <file>file:/C:/Users/sgupt/Documents/NetBeansProjects/QuizApp/src/quizapp/Home.java</file>
-            <file>file:/C:/Users/sgupt/Documents/NetBeansProjects/QuizApp/src/quizapp/LoginWindow.java</file>
+            <file>file:/C:/Users/sgupt/Documents/NetBeansProjects/QuizApp/src/quizapp/HomeWin.java</file>
+            <file>file:/C:/Users/sgupt/Documents/NetBeansProjects/QuizApp/src/quizapp/SignUpWin.java</file>
+            <file>file:/C:/Users/sgupt/Documents/NetBeansProjects/QuizApp/src/quizapp/LoginWin.java</file>
         </group>
     </open-files>
 </project-private>

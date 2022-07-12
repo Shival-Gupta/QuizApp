@@ -2,9 +2,9 @@ package quizapp;
 
 import java.sql.*;
 
-public class SignUpWindow extends QuizApp {
+public class SignUpWin extends QuizApp {
 
-    public SignUpWindow() {
+    public SignUpWin() {
         initComponents();
     }
 
@@ -41,10 +41,13 @@ public class SignUpWindow extends QuizApp {
         usernameField = new javax.swing.JTextField();
         passwordPanel = new javax.swing.JPanel();
         passwordLabel = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        passwordField = new javax.swing.JPasswordField();
         btnPanel = new javax.swing.JPanel();
-        signupBtn = new javax.swing.JPanel();
-        loginLabel = new javax.swing.JLabel();
+        signUpBtn = new javax.swing.JPanel();
+        signUpLabel = new javax.swing.JLabel();
+        optionPanel = new javax.swing.JPanel();
+        loginPrompt = new javax.swing.JLabel();
+        r2loginBtn = new javax.swing.JLabel();
         aboutPanel = new javax.swing.JPanel();
         Disclaimer = new javax.swing.JLabel();
 
@@ -82,9 +85,9 @@ public class SignUpWindow extends QuizApp {
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,9 +397,13 @@ public class SignUpWindow extends QuizApp {
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         passwordLabel.setText("Password:");
 
-        jPasswordField1.setBackground(new java.awt.Color(242, 242, 242));
-        jPasswordField1.setForeground(new java.awt.Color(60, 63, 66));
-        jPasswordField1.setText("jPasswordField1");
+        passwordField.setBackground(new java.awt.Color(242, 242, 242));
+        passwordField.setForeground(new java.awt.Color(60, 63, 66));
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout passwordPanelLayout = new javax.swing.GroupLayout(passwordPanel);
         passwordPanel.setLayout(passwordPanelLayout);
@@ -406,7 +413,7 @@ public class SignUpWindow extends QuizApp {
                 .addContainerGap()
                 .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
         passwordPanelLayout.setVerticalGroup(
@@ -415,7 +422,7 @@ public class SignUpWindow extends QuizApp {
                 .addGap(6, 6, 6)
                 .addGroup(passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -424,40 +431,74 @@ public class SignUpWindow extends QuizApp {
         btnPanel.setBackground(new java.awt.Color(34, 43, 53));
         btnPanel.setForeground(new java.awt.Color(242, 242, 242));
 
-        signupBtn.setBackground(new java.awt.Color(60, 63, 66));
-        signupBtn.setForeground(new java.awt.Color(60, 63, 66));
-        signupBtn.setMaximumSize(new java.awt.Dimension(155, 30));
-        signupBtn.setMinimumSize(new java.awt.Dimension(155, 30));
-        signupBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        signUpBtn.setBackground(new java.awt.Color(60, 63, 66));
+        signUpBtn.setForeground(new java.awt.Color(242, 242, 242));
+        signUpBtn.setMaximumSize(new java.awt.Dimension(155, 30));
+        signUpBtn.setMinimumSize(new java.awt.Dimension(155, 30));
+        signUpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signupBtnMouseClicked(evt);
+                signUpBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                signUpBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                signUpBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                signUpBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                signUpBtnMouseReleased(evt);
             }
         });
 
-        loginLabel.setBackground(new java.awt.Color(242, 242, 242));
-        loginLabel.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        loginLabel.setForeground(new java.awt.Color(242, 242, 242));
-        loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        loginLabel.setText("Sign Up");
+        signUpLabel.setBackground(new java.awt.Color(242, 242, 242));
+        signUpLabel.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        signUpLabel.setForeground(new java.awt.Color(242, 242, 242));
+        signUpLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        signUpLabel.setText("Sign Up");
 
-        javax.swing.GroupLayout signupBtnLayout = new javax.swing.GroupLayout(signupBtn);
-        signupBtn.setLayout(signupBtnLayout);
-        signupBtnLayout.setHorizontalGroup(
-            signupBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signupBtnLayout.createSequentialGroup()
+        javax.swing.GroupLayout signUpBtnLayout = new javax.swing.GroupLayout(signUpBtn);
+        signUpBtn.setLayout(signUpBtnLayout);
+        signUpBtnLayout.setHorizontalGroup(
+            signUpBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signUpBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                .addComponent(signUpLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        signupBtnLayout.setVerticalGroup(
-            signupBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signupBtnLayout.createSequentialGroup()
+        signUpBtnLayout.setVerticalGroup(
+            signUpBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signUpBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(signUpLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        btnPanel.add(signupBtn);
+        btnPanel.add(signUpBtn);
+
+        optionPanel.setBackground(new java.awt.Color(34, 43, 53));
+        optionPanel.setForeground(new java.awt.Color(242, 242, 242));
+
+        loginPrompt.setBackground(new java.awt.Color(60, 63, 66));
+        loginPrompt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        loginPrompt.setForeground(new java.awt.Color(242, 242, 242));
+        loginPrompt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginPrompt.setText("Already have an account yet?");
+        optionPanel.add(loginPrompt);
+
+        r2loginBtn.setBackground(new java.awt.Color(60, 63, 66));
+        r2loginBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        r2loginBtn.setForeground(new java.awt.Color(104, 181, 248));
+        r2loginBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        r2loginBtn.setText("Login");
+        r2loginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                r2loginBtnMouseClicked(evt);
+            }
+        });
+        optionPanel.add(r2loginBtn);
 
         aboutPanel.setBackground(new java.awt.Color(34, 43, 53));
         aboutPanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -476,10 +517,8 @@ public class SignUpWindow extends QuizApp {
             .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(aboutPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(optionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,9 +527,11 @@ public class SignUpWindow extends QuizApp {
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(optionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(aboutPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -506,33 +547,6 @@ public class SignUpWindow extends QuizApp {
     private void pwdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdFieldActionPerformed
-
-    private void signupBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupBtnMouseClicked
-        String uid, pwd;
-        uid = nameField.getText();
-        pwd = new String(pwdField.getPassword());
-
-        String sql = "select * from users where UserID= ? AND Password= ?";
-
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/quizapp", "root", "");
-            PreparedStatement ps= con.prepareStatement(sql);
-            ps.setString(1, uid);
-            ps.setString(2, pwd);
-        }
-        catch (Exception e) {
-            System.out.println("SQL Connection Unsuccesfull!");
-        }
-        if(uid.equals("user") && pwd.equals("0000")){
-            homeWindow.setVisible(true);
-            this.setVisible(false);
-            System.out.println("\nLogin Succesfull!!"+"\tID: "+uid+"\tPWD: "+pwd);
-        }
-        else{
-            System.out.println("\nUnsuccesfull Login!!"+"\tID: "+uid+"\tPWD: "+pwd);
-        }
-    }//GEN-LAST:event_signupBtnMouseClicked
 
     private void mailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailFieldActionPerformed
         // TODO add your handling code here:
@@ -554,6 +568,57 @@ public class SignUpWindow extends QuizApp {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
 
+    private void r2loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_r2loginBtnMouseClicked
+        uid = usernameField.getText().trim();
+        pwd = new String(passwordField.getPassword());
+        this.setVisible(false);
+        loginWindow.setVisible(true);
+        loginWindow.idField.setText(uid);
+        loginWindow.pwdField.setText(pwd);
+
+    }//GEN-LAST:event_r2loginBtnMouseClicked
+
+    private void signUpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMouseClicked
+//        uid = idField.getText().trim();
+//        pwd = new String(pwdField.getPassword());
+//
+//        if(tryLogin(uid, pwd)) {
+//            System.out.println("\nLogin Succesfull!!"+"\tUser: "+uid);
+//
+//            fetchLoginDetails();
+//
+//            dispose();
+//            homeWindow.setVisible(true);
+//        }
+//        else {
+//            System.out.println("\nUnsuccesfull Login!!"+"\tUser: "+uid);
+//            Toolkit.getDefaultToolkit().beep();
+//            JOptionPane.showMessageDialog(null, "<Html>Invalid username or password !<BR>"
+//                + "Please try again.</HTML>",
+//                "Unsuccessful Login", JOptionPane.ERROR_MESSAGE);
+//        }
+    }//GEN-LAST:event_signUpBtnMouseClicked
+
+    private void signUpBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMouseEntered
+        signUpBtn.setBackground(new java.awt.Color(26, 28, 29));
+    }//GEN-LAST:event_signUpBtnMouseEntered
+
+    private void signUpBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMouseExited
+        signUpBtn.setBackground(new java.awt.Color(60, 63, 66));
+    }//GEN-LAST:event_signUpBtnMouseExited
+
+    private void signUpBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMousePressed
+        signUpBtn.setBackground(new java.awt.Color(17, 18, 19));
+    }//GEN-LAST:event_signUpBtnMousePressed
+
+    private void signUpBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMouseReleased
+        signUpBtn.setBackground(new java.awt.Color(60, 63, 66));
+    }//GEN-LAST:event_signUpBtnMouseReleased
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -571,24 +636,24 @@ public class SignUpWindow extends QuizApp {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SignUpWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUpWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignUpWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUpWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignUpWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUpWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignUpWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUpWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SignUpWindow().setVisible(true);
+                new SignUpWin().setVisible(true);
             }
         });
     }
-
+    // <editor-fold defaultstate="collapsed" desc="Variable declaration">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Disclaimer;
     private javax.swing.JPanel aboutPanel;
@@ -601,29 +666,33 @@ public class SignUpWindow extends QuizApp {
     private javax.swing.JPanel dobPanel;
     private javax.swing.JPanel inputPanel;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JLabel loginLabel;
+    private javax.swing.JLabel loginPrompt;
     private javax.swing.JTextField mailField;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JPanel mailPanel;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JPanel namePanel;
+    private javax.swing.JPanel optionPanel;
+    public javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPanel passwordPanel;
     private javax.swing.JPasswordField pwdField;
     private javax.swing.JLabel pwdLabel;
+    private javax.swing.JLabel r2loginBtn;
     private javax.swing.JTextField sexField;
     private javax.swing.JLabel sexLabel;
     private javax.swing.JPanel sexPanel;
-    private javax.swing.JPanel signupBtn;
+    private javax.swing.JPanel signUpBtn;
+    private javax.swing.JLabel signUpLabel;
     private javax.swing.JTextField stateField;
     private javax.swing.JLabel stateLabel;
     private javax.swing.JPanel statePanel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JPanel titlePanel;
-    private javax.swing.JTextField usernameField;
+    public javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JPanel usernamePanel;
     // End of variables declaration//GEN-END:variables
+    // </editor-fold>         
 }
