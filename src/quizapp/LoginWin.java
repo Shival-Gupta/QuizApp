@@ -58,6 +58,7 @@ public class LoginWin extends QuizApp {
         }
     }
     
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -127,7 +128,7 @@ public class LoginWin extends QuizApp {
 
         idField.setBackground(new java.awt.Color(242, 242, 242));
         idField.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        idField.setForeground(new java.awt.Color(60, 63, 66));
+        idField.setForeground(new java.awt.Color(0, 0, 0));
         idField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         idField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +143,7 @@ public class LoginWin extends QuizApp {
         pwdLabel.setText("Password:");
 
         pwdField.setBackground(new java.awt.Color(242, 242, 242));
-        pwdField.setForeground(new java.awt.Color(60, 63, 66));
+        pwdField.setForeground(new java.awt.Color(0, 0, 0));
         pwdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwdFieldActionPerformed(evt);
@@ -305,8 +306,9 @@ public class LoginWin extends QuizApp {
             
             fetchLoginDetails();
             
-            dispose();
-            homeWindow.setVisible(true);    
+            signUpWindow.dispose();
+            this.dispose();
+            homeWindow.setVisible(true);
         }
         else {
             System.out.println("\nUnsuccesfull Login!!"+"\tUser: "+uid);

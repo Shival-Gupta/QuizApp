@@ -5,9 +5,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 public class QuizApp extends javax.swing.JFrame{
+    
+    public static void main(String[] args) {
+        loginWindow.setVisible(true);
+    }
     
     public static LoginWin loginWindow = new LoginWin();
     public static HomeWin homeWindow = new HomeWin();
@@ -20,6 +26,8 @@ public class QuizApp extends javax.swing.JFrame{
     
     public static String uid = "", pwd = "", name = "", sex = "M", dob = "", mail = "", state = "", country = "";
     public static int highScore = 0;
+    
+    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
     
     public static void checkConnection(){
         try {
@@ -38,10 +46,6 @@ public class QuizApp extends javax.swing.JFrame{
                     "Database Connection Unsuccesfull", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
-    }
-    
-    public static void main(String[] args) {
-        loginWindow.setVisible(true);
     }
     
 }
