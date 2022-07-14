@@ -26,6 +26,7 @@ public class QuizApp extends javax.swing.JFrame{
     
     public static String uid = "", pwd = "", name = "", sex = "M", dob = "", mail = "", state = "", country = "";
     public static int highScore = 0;
+    public static boolean loginStatus=false;
     
     public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
     

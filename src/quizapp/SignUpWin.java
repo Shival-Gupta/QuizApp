@@ -6,11 +6,12 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class SignUpWin extends QuizApp {
-
+    
     public SignUpWin() {
         initComponents();
     }
     
+    String cpwd;
     void fetchValues(){
         uid = usernameField.getText().trim();
         pwd = new String(passwordField.getPassword());
@@ -30,6 +31,7 @@ public class SignUpWin extends QuizApp {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         sexGroup = new javax.swing.ButtonGroup();
         body = new javax.swing.JPanel();
@@ -62,6 +64,9 @@ public class SignUpWin extends QuizApp {
         passwordPanel = new javax.swing.JPanel();
         passwordLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
+        confirmPwdPanel = new javax.swing.JPanel();
+        confirmPwdLabel = new javax.swing.JLabel();
+        confirmPwdField = new javax.swing.JPasswordField();
         btnPanel = new javax.swing.JPanel();
         signUpBtn = new javax.swing.JPanel();
         signUpLabel = new javax.swing.JLabel();
@@ -72,10 +77,10 @@ public class SignUpWin extends QuizApp {
         Disclaimer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         body.setBackground(new java.awt.Color(34, 43, 53));
         body.setForeground(new java.awt.Color(242, 242, 242));
+        body.setLayout(new java.awt.GridBagLayout());
 
         titlePanel.setBackground(new java.awt.Color(34, 43, 53));
         titlePanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -90,21 +95,30 @@ public class SignUpWin extends QuizApp {
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(titlePanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(titlePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleLabel)
                 .addContainerGap())
         );
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 259;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        body.add(titlePanel, gridBagConstraints);
+
         inputPanel.setBackground(new java.awt.Color(34, 43, 53));
         inputPanel.setForeground(new java.awt.Color(242, 242, 242));
+        inputPanel.setMaximumSize(new java.awt.Dimension(511, 423));
+        inputPanel.setMinimumSize(new java.awt.Dimension(511, 423));
         inputPanel.setLayout(new java.awt.GridLayout(0, 1));
 
         namePanel.setBackground(new java.awt.Color(34, 43, 53));
@@ -114,7 +128,7 @@ public class SignUpWin extends QuizApp {
         nameLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(242, 242, 242));
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        nameLabel.setText("     Name:");
+        nameLabel.setText("  Name:");
 
         nameField.setBackground(new java.awt.Color(242, 242, 242));
         nameField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
@@ -134,8 +148,8 @@ public class SignUpWin extends QuizApp {
                 .addContainerGap()
                 .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addContainerGap())
         );
         namePanelLayout.setVerticalGroup(
             namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +170,7 @@ public class SignUpWin extends QuizApp {
         mailLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         mailLabel.setForeground(new java.awt.Color(242, 242, 242));
         mailLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        mailLabel.setText("     Mail:");
+        mailLabel.setText("  Mail:");
 
         mailField.setBackground(new java.awt.Color(242, 242, 242));
         mailField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
@@ -176,8 +190,8 @@ public class SignUpWin extends QuizApp {
                 .addContainerGap()
                 .addComponent(mailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mailField, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(mailField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addContainerGap())
         );
         mailPanelLayout.setVerticalGroup(
             mailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +200,7 @@ public class SignUpWin extends QuizApp {
                 .addGroup(mailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mailLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         inputPanel.add(mailPanel);
@@ -198,7 +212,7 @@ public class SignUpWin extends QuizApp {
         sexLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         sexLabel.setForeground(new java.awt.Color(242, 242, 242));
         sexLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        sexLabel.setText("     Sex:");
+        sexLabel.setText("  Sex:");
 
         maleRBtn.setBackground(new java.awt.Color(34, 43, 53));
         sexGroup.add(maleRBtn);
@@ -248,12 +262,12 @@ public class SignUpWin extends QuizApp {
                 .addContainerGap()
                 .addComponent(sexLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(maleRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(maleRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(femaleRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(femaleRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(naRBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(naRBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addContainerGap())
         );
         sexPanelLayout.setVerticalGroup(
             sexPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +278,7 @@ public class SignUpWin extends QuizApp {
                     .addComponent(femaleRBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(sexLabel)
                     .addComponent(maleRBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         inputPanel.add(sexPanel);
@@ -276,7 +290,7 @@ public class SignUpWin extends QuizApp {
         dobLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         dobLabel.setForeground(new java.awt.Color(242, 242, 242));
         dobLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        dobLabel.setText("     Date of Birth:");
+        dobLabel.setText("  Date of Birth:");
 
         dobDateChooser.setBackground(new java.awt.Color(242, 242, 242));
         dobDateChooser.setForeground(new java.awt.Color(0, 0, 0));
@@ -289,8 +303,8 @@ public class SignUpWin extends QuizApp {
                 .addContainerGap()
                 .addComponent(dobLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dobDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(dobDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addContainerGap())
         );
         dobPanelLayout.setVerticalGroup(
             dobPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,7 +313,7 @@ public class SignUpWin extends QuizApp {
                 .addGroup(dobPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(dobLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dobDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         inputPanel.add(dobPanel);
@@ -311,7 +325,7 @@ public class SignUpWin extends QuizApp {
         stateLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         stateLabel.setForeground(new java.awt.Color(242, 242, 242));
         stateLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        stateLabel.setText("     State:");
+        stateLabel.setText("  State:");
 
         stateField.setBackground(new java.awt.Color(242, 242, 242));
         stateField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
@@ -331,8 +345,8 @@ public class SignUpWin extends QuizApp {
                 .addContainerGap()
                 .addComponent(stateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(stateField, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(stateField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addContainerGap())
         );
         statePanelLayout.setVerticalGroup(
             statePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +355,7 @@ public class SignUpWin extends QuizApp {
                 .addGroup(statePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(stateLabel)
                     .addComponent(stateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         inputPanel.add(statePanel);
@@ -353,7 +367,7 @@ public class SignUpWin extends QuizApp {
         countryLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         countryLabel.setForeground(new java.awt.Color(242, 242, 242));
         countryLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        countryLabel.setText("     Country:");
+        countryLabel.setText("  Country:");
 
         countryField.setBackground(new java.awt.Color(242, 242, 242));
         countryField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
@@ -373,8 +387,8 @@ public class SignUpWin extends QuizApp {
                 .addContainerGap()
                 .addComponent(countryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(countryField, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(countryField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addContainerGap())
         );
         countryPanelLayout.setVerticalGroup(
             countryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,7 +397,7 @@ public class SignUpWin extends QuizApp {
                 .addGroup(countryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(countryLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         inputPanel.add(countryPanel);
@@ -395,7 +409,7 @@ public class SignUpWin extends QuizApp {
         usernameLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(242, 242, 242));
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        usernameLabel.setText("     Username:");
+        usernameLabel.setText("  Username:");
 
         usernameField.setBackground(new java.awt.Color(242, 242, 242));
         usernameField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
@@ -415,8 +429,8 @@ public class SignUpWin extends QuizApp {
                 .addContainerGap()
                 .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addContainerGap())
         );
         usernamePanelLayout.setVerticalGroup(
             usernamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,7 +439,7 @@ public class SignUpWin extends QuizApp {
                 .addGroup(usernamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usernameLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         inputPanel.add(usernamePanel);
@@ -437,7 +451,7 @@ public class SignUpWin extends QuizApp {
         passwordLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         passwordLabel.setForeground(new java.awt.Color(242, 242, 242));
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        passwordLabel.setText("     Password:");
+        passwordLabel.setText("  Password:");
 
         passwordField.setBackground(new java.awt.Color(242, 242, 242));
         passwordField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
@@ -456,8 +470,8 @@ public class SignUpWin extends QuizApp {
                 .addContainerGap()
                 .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addContainerGap())
         );
         passwordPanelLayout.setVerticalGroup(
             passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,10 +480,59 @@ public class SignUpWin extends QuizApp {
                 .addGroup(passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         inputPanel.add(passwordPanel);
+
+        confirmPwdPanel.setBackground(new java.awt.Color(34, 43, 53));
+        confirmPwdPanel.setForeground(new java.awt.Color(242, 242, 242));
+
+        confirmPwdLabel.setBackground(new java.awt.Color(60, 63, 66));
+        confirmPwdLabel.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        confirmPwdLabel.setForeground(new java.awt.Color(242, 242, 242));
+        confirmPwdLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        confirmPwdLabel.setText("  Confirm Password:");
+
+        confirmPwdField.setBackground(new java.awt.Color(242, 242, 242));
+        confirmPwdField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
+        confirmPwdField.setForeground(new java.awt.Color(0, 0, 0));
+        confirmPwdField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmPwdFieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout confirmPwdPanelLayout = new javax.swing.GroupLayout(confirmPwdPanel);
+        confirmPwdPanel.setLayout(confirmPwdPanelLayout);
+        confirmPwdPanelLayout.setHorizontalGroup(
+            confirmPwdPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(confirmPwdPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(confirmPwdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmPwdField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        confirmPwdPanelLayout.setVerticalGroup(
+            confirmPwdPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(confirmPwdPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(confirmPwdPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confirmPwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmPwdLabel))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        inputPanel.add(confirmPwdPanel);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = -11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 0, 0, 0);
+        body.add(inputPanel, gridBagConstraints);
 
         btnPanel.setBackground(new java.awt.Color(34, 43, 53));
         btnPanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -521,6 +584,15 @@ public class SignUpWin extends QuizApp {
 
         btnPanel.add(signUpBtn);
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 346;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
+        body.add(btnPanel, gridBagConstraints);
+
         optionPanel.setBackground(new java.awt.Color(34, 43, 53));
         optionPanel.setForeground(new java.awt.Color(242, 242, 242));
 
@@ -543,6 +615,15 @@ public class SignUpWin extends QuizApp {
         });
         optionPanel.add(r2loginBtn);
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 304;
+        gridBagConstraints.ipady = -10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
+        body.add(optionPanel, gridBagConstraints);
+
         aboutPanel.setBackground(new java.awt.Color(34, 43, 53));
         aboutPanel.setForeground(new java.awt.Color(242, 242, 242));
 
@@ -553,39 +634,18 @@ public class SignUpWin extends QuizApp {
         Disclaimer.setText("Quiz App © Shival Gupta");
         aboutPanel.add(Disclaimer);
 
-        javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
-        body.setLayout(bodyLayout);
-        bodyLayout.setHorizontalGroup(
-            bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(aboutPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(optionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(bodyLayout.createSequentialGroup()
-                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(bodyLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        bodyLayout.setVerticalGroup(
-            bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bodyLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(optionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(aboutPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 365;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
+        body.add(aboutPanel, gridBagConstraints);
 
-        getContentPane().add(body);
+        getContentPane().add(body, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
@@ -610,30 +670,42 @@ public class SignUpWin extends QuizApp {
 
     private void r2loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_r2loginBtnMouseClicked
         uid = usernameField.getText().trim();
+        loginWindow.idField.setText(uid);
+        
         pwd = new String(passwordField.getPassword());
+        loginWindow.pwdField.setText(pwd);
+        
         this.setVisible(false);
         loginWindow.setVisible(true);
-        loginWindow.idField.setText(uid);
-        loginWindow.pwdField.setText(pwd);
-
     }//GEN-LAST:event_r2loginBtnMouseClicked
 
     private void signUpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMouseClicked
         fetchValues();
+        cpwd = new String(confirmPwdField.getPassword());
+        
+        if(!pwd.equals(cpwd)){
+            JOptionPane.showMessageDialog(null, "Password didn't match", "Error Signing Up", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         try {
             rs.close();
             ps.close();
-            
+
             sql = "INSERT INTO users VALUES('"+name+"' ,"+highScore+" ,'"+mail+"' ,'"+sex+"' ,'"+dob+"' ,'"+state+"' ,'"+country+"' ,'"+uid+"' ,'"+pwd+"');";
-            
+
             ps = con.prepareStatement(sql);
             if(ps.executeUpdate() > 0)
             {
                 JOptionPane.showMessageDialog(null, "New User Added");
+                
+                uid = usernameField.getText().trim();
+                loginWindow.idField.setText(uid);
+                
                 this.dispose();
                 loginWindow.setVisible(true);
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             Logger.getLogger(SignUpWin.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Error: "+ex, "Error Signing Up", JOptionPane.ERROR_MESSAGE);
         }
@@ -671,6 +743,10 @@ public class SignUpWin extends QuizApp {
     private void maleRBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleRBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_maleRBtnActionPerformed
+
+    private void confirmPwdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPwdFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmPwdFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -712,6 +788,9 @@ public class SignUpWin extends QuizApp {
     private javax.swing.JPanel aboutPanel;
     private javax.swing.JPanel body;
     private javax.swing.JPanel btnPanel;
+    public javax.swing.JPasswordField confirmPwdField;
+    private javax.swing.JLabel confirmPwdLabel;
+    private javax.swing.JPanel confirmPwdPanel;
     private javax.swing.JTextField countryField;
     private javax.swing.JLabel countryLabel;
     private javax.swing.JPanel countryPanel;

@@ -83,7 +83,6 @@ public class LoginWin extends QuizApp {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 380));
-        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         body.setBackground(new java.awt.Color(34, 43, 53));
         body.setForeground(new java.awt.Color(242, 242, 242));
@@ -287,7 +286,7 @@ public class LoginWin extends QuizApp {
                 .addComponent(aboutPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(body);
+        getContentPane().add(body, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -303,6 +302,7 @@ public class LoginWin extends QuizApp {
         
         if(tryLogin(uid, pwd)) {
             System.out.println("\nLogin Succesfull!!"+"\tUser: "+uid);
+            loginStatus=true;
             
             fetchLoginDetails();
             
