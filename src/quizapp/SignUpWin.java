@@ -34,7 +34,7 @@ public class SignUpWin extends QuizApp {
         java.awt.GridBagConstraints gridBagConstraints;
 
         sexGroup = new javax.swing.ButtonGroup();
-        body = new javax.swing.JPanel();
+        bodyPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         inputPanel = new javax.swing.JPanel();
@@ -73,14 +73,16 @@ public class SignUpWin extends QuizApp {
         optionPanel = new javax.swing.JPanel();
         loginPrompt = new javax.swing.JLabel();
         r2loginBtn = new javax.swing.JLabel();
-        aboutPanel = new javax.swing.JPanel();
+        footerPanel = new javax.swing.JPanel();
         Disclaimer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(512, 651));
+        setPreferredSize(new java.awt.Dimension(512, 651));
 
-        body.setBackground(new java.awt.Color(34, 43, 53));
-        body.setForeground(new java.awt.Color(242, 242, 242));
-        body.setLayout(new java.awt.GridBagLayout());
+        bodyPanel.setBackground(new java.awt.Color(34, 43, 53));
+        bodyPanel.setForeground(new java.awt.Color(242, 242, 242));
+        bodyPanel.setLayout(new java.awt.GridBagLayout());
 
         titlePanel.setBackground(new java.awt.Color(34, 43, 53));
         titlePanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -96,9 +98,9 @@ public class SignUpWin extends QuizApp {
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +115,7 @@ public class SignUpWin extends QuizApp {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 259;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        body.add(titlePanel, gridBagConstraints);
+        bodyPanel.add(titlePanel, gridBagConstraints);
 
         inputPanel.setBackground(new java.awt.Color(34, 43, 53));
         inputPanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -130,9 +132,9 @@ public class SignUpWin extends QuizApp {
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nameLabel.setText("  Name:");
 
-        nameField.setBackground(new java.awt.Color(242, 242, 242));
+        nameField.setBackground(new java.awt.Color(72, 75, 80));
         nameField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
-        nameField.setForeground(new java.awt.Color(0, 0, 0));
+        nameField.setForeground(new java.awt.Color(242, 242, 242));
         nameField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         nameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,9 +174,9 @@ public class SignUpWin extends QuizApp {
         mailLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         mailLabel.setText("  Mail:");
 
-        mailField.setBackground(new java.awt.Color(242, 242, 242));
+        mailField.setBackground(new java.awt.Color(72, 75, 80));
         mailField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
-        mailField.setForeground(new java.awt.Color(0, 0, 0));
+        mailField.setForeground(new java.awt.Color(242, 242, 242));
         mailField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         mailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -292,8 +294,8 @@ public class SignUpWin extends QuizApp {
         dobLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         dobLabel.setText("  Date of Birth:");
 
-        dobDateChooser.setBackground(new java.awt.Color(242, 242, 242));
-        dobDateChooser.setForeground(new java.awt.Color(0, 0, 0));
+        dobDateChooser.setBackground(new java.awt.Color(72, 75, 80));
+        dobDateChooser.setForeground(new java.awt.Color(242, 242, 242));
 
         javax.swing.GroupLayout dobPanelLayout = new javax.swing.GroupLayout(dobPanel);
         dobPanel.setLayout(dobPanelLayout);
@@ -327,9 +329,9 @@ public class SignUpWin extends QuizApp {
         stateLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         stateLabel.setText("  State:");
 
-        stateField.setBackground(new java.awt.Color(242, 242, 242));
+        stateField.setBackground(new java.awt.Color(72, 75, 80));
         stateField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
-        stateField.setForeground(new java.awt.Color(0, 0, 0));
+        stateField.setForeground(new java.awt.Color(242, 242, 242));
         stateField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         stateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,9 +371,9 @@ public class SignUpWin extends QuizApp {
         countryLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         countryLabel.setText("  Country:");
 
-        countryField.setBackground(new java.awt.Color(242, 242, 242));
+        countryField.setBackground(new java.awt.Color(72, 75, 80));
         countryField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
-        countryField.setForeground(new java.awt.Color(0, 0, 0));
+        countryField.setForeground(new java.awt.Color(242, 242, 242));
         countryField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         countryField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -411,9 +413,9 @@ public class SignUpWin extends QuizApp {
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         usernameLabel.setText("  Username:");
 
-        usernameField.setBackground(new java.awt.Color(242, 242, 242));
+        usernameField.setBackground(new java.awt.Color(72, 75, 80));
         usernameField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
-        usernameField.setForeground(new java.awt.Color(0, 0, 0));
+        usernameField.setForeground(new java.awt.Color(242, 242, 242));
         usernameField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -453,9 +455,9 @@ public class SignUpWin extends QuizApp {
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passwordLabel.setText("  Password:");
 
-        passwordField.setBackground(new java.awt.Color(242, 242, 242));
+        passwordField.setBackground(new java.awt.Color(72, 75, 80));
         passwordField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
-        passwordField.setForeground(new java.awt.Color(0, 0, 0));
+        passwordField.setForeground(new java.awt.Color(242, 242, 242));
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
@@ -494,9 +496,9 @@ public class SignUpWin extends QuizApp {
         confirmPwdLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         confirmPwdLabel.setText("  Confirm Password:");
 
-        confirmPwdField.setBackground(new java.awt.Color(242, 242, 242));
+        confirmPwdField.setBackground(new java.awt.Color(72, 75, 80));
         confirmPwdField.setFont(new java.awt.Font("Myanmar Text", 1, 13)); // NOI18N
-        confirmPwdField.setForeground(new java.awt.Color(0, 0, 0));
+        confirmPwdField.setForeground(new java.awt.Color(242, 242, 242));
         confirmPwdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmPwdFieldActionPerformed(evt);
@@ -532,7 +534,7 @@ public class SignUpWin extends QuizApp {
         gridBagConstraints.ipady = -11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 0, 0, 0);
-        body.add(inputPanel, gridBagConstraints);
+        bodyPanel.add(inputPanel, gridBagConstraints);
 
         btnPanel.setBackground(new java.awt.Color(34, 43, 53));
         btnPanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -591,7 +593,7 @@ public class SignUpWin extends QuizApp {
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
-        body.add(btnPanel, gridBagConstraints);
+        bodyPanel.add(btnPanel, gridBagConstraints);
 
         optionPanel.setBackground(new java.awt.Color(34, 43, 53));
         optionPanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -622,17 +624,17 @@ public class SignUpWin extends QuizApp {
         gridBagConstraints.ipady = -10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
-        body.add(optionPanel, gridBagConstraints);
+        bodyPanel.add(optionPanel, gridBagConstraints);
 
-        aboutPanel.setBackground(new java.awt.Color(34, 43, 53));
-        aboutPanel.setForeground(new java.awt.Color(242, 242, 242));
+        footerPanel.setBackground(new java.awt.Color(34, 43, 53));
+        footerPanel.setForeground(new java.awt.Color(242, 242, 242));
 
         Disclaimer.setBackground(new java.awt.Color(60, 63, 66));
         Disclaimer.setFont(new java.awt.Font("Myanmar Text", 1, 12)); // NOI18N
         Disclaimer.setForeground(new java.awt.Color(242, 242, 242));
         Disclaimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Disclaimer.setText("Quiz App © Shival Gupta");
-        aboutPanel.add(Disclaimer);
+        footerPanel.add(Disclaimer);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -640,9 +642,9 @@ public class SignUpWin extends QuizApp {
         gridBagConstraints.ipadx = 365;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
-        body.add(aboutPanel, gridBagConstraints);
+        bodyPanel.add(footerPanel, gridBagConstraints);
 
-        getContentPane().add(body, java.awt.BorderLayout.CENTER);
+        getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -759,7 +761,7 @@ public class SignUpWin extends QuizApp {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -785,8 +787,7 @@ public class SignUpWin extends QuizApp {
     // <editor-fold defaultstate="collapsed" desc="Variable declaration">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Disclaimer;
-    private javax.swing.JPanel aboutPanel;
-    private javax.swing.JPanel body;
+    private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel btnPanel;
     public javax.swing.JPasswordField confirmPwdField;
     private javax.swing.JLabel confirmPwdLabel;
@@ -798,6 +799,7 @@ public class SignUpWin extends QuizApp {
     private javax.swing.JLabel dobLabel;
     private javax.swing.JPanel dobPanel;
     private javax.swing.JRadioButton femaleRBtn;
+    private javax.swing.JPanel footerPanel;
     private javax.swing.JPanel inputPanel;
     private javax.swing.JLabel loginPrompt;
     private javax.swing.JTextField mailField;

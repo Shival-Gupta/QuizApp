@@ -63,7 +63,7 @@ public class LoginWin extends QuizApp {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        body = new javax.swing.JPanel();
+        bodyPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         inputPanel = new javax.swing.JPanel();
@@ -78,14 +78,15 @@ public class LoginWin extends QuizApp {
         optionPanel = new javax.swing.JPanel();
         signUpPrompt = new javax.swing.JLabel();
         r2signUpBtn = new javax.swing.JLabel();
-        aboutPanel = new javax.swing.JPanel();
+        footerPanel = new javax.swing.JPanel();
         Disclaimer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(400, 380));
+        setMinimumSize(new java.awt.Dimension(450, 600));
+        setPreferredSize(new java.awt.Dimension(450, 600));
 
-        body.setBackground(new java.awt.Color(34, 43, 53));
-        body.setForeground(new java.awt.Color(242, 242, 242));
+        bodyPanel.setBackground(new java.awt.Color(34, 43, 53));
+        bodyPanel.setForeground(new java.awt.Color(242, 242, 242));
 
         titlePanel.setBackground(new java.awt.Color(34, 43, 53));
         titlePanel.setForeground(new java.awt.Color(242, 242, 242));
@@ -125,9 +126,9 @@ public class LoginWin extends QuizApp {
         idLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         idLabel.setText("Username / Email:");
 
-        idField.setBackground(new java.awt.Color(242, 242, 242));
+        idField.setBackground(new java.awt.Color(72, 75, 80));
         idField.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        idField.setForeground(new java.awt.Color(0, 0, 0));
+        idField.setForeground(new java.awt.Color(242, 242, 242));
         idField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         idField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,8 +142,8 @@ public class LoginWin extends QuizApp {
         pwdLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         pwdLabel.setText("Password:");
 
-        pwdField.setBackground(new java.awt.Color(242, 242, 242));
-        pwdField.setForeground(new java.awt.Color(0, 0, 0));
+        pwdField.setBackground(new java.awt.Color(72, 75, 80));
+        pwdField.setForeground(new java.awt.Color(242, 242, 242));
         pwdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwdFieldActionPerformed(evt);
@@ -252,29 +253,29 @@ public class LoginWin extends QuizApp {
         });
         optionPanel.add(r2signUpBtn);
 
-        aboutPanel.setBackground(new java.awt.Color(34, 43, 53));
-        aboutPanel.setForeground(new java.awt.Color(242, 242, 242));
+        footerPanel.setBackground(new java.awt.Color(34, 43, 53));
+        footerPanel.setForeground(new java.awt.Color(242, 242, 242));
 
         Disclaimer.setBackground(new java.awt.Color(60, 63, 66));
         Disclaimer.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         Disclaimer.setForeground(new java.awt.Color(242, 242, 242));
         Disclaimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Disclaimer.setText("Quiz App © Shival Gupta");
-        aboutPanel.add(Disclaimer);
+        footerPanel.add(Disclaimer);
 
-        javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
-        body.setLayout(bodyLayout);
-        bodyLayout.setHorizontalGroup(
-            bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
+        bodyPanel.setLayout(bodyPanelLayout);
+        bodyPanelLayout.setHorizontalGroup(
+            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 342, Short.MAX_VALUE)
+            .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
             .addComponent(btnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(optionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(aboutPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(footerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        bodyLayout.setVerticalGroup(
-            bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bodyLayout.createSequentialGroup()
+        bodyPanelLayout.setVerticalGroup(
+            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bodyPanelLayout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,11 +283,11 @@ public class LoginWin extends QuizApp {
                 .addComponent(btnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(optionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
-                .addComponent(aboutPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(body, java.awt.BorderLayout.CENTER);
+        getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -301,17 +302,19 @@ public class LoginWin extends QuizApp {
         pwd = new String(pwdField.getPassword());
         
         if(tryLogin(uid, pwd)) {
-            System.out.println("\nLogin Succesfull!!"+"\tUser: "+uid);
+            System.out.println("\n"+uid+"Logged in succesfully!");
             loginStatus=true;
             
             fetchLoginDetails();
+            initHomeWin();
+            homeWindow.usernameLabel.setText(name);
             
             signUpWindow.dispose();
             this.dispose();
             homeWindow.setVisible(true);
         }
         else {
-            System.out.println("\nUnsuccesfull Login!!"+"\tUser: "+uid);
+            System.out.println("\nUnsuccesfull login attempt by user: "+uid);
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "<Html>Invalid username or password !<BR>"
                     + "Please try again.</HTML>", 
@@ -357,7 +360,7 @@ public class LoginWin extends QuizApp {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -383,9 +386,9 @@ public class LoginWin extends QuizApp {
     // <editor-fold defaultstate="collapsed" desc="Variable declaration">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Disclaimer;
-    private javax.swing.JPanel aboutPanel;
-    private javax.swing.JPanel body;
+    private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel btnPanel;
+    private javax.swing.JPanel footerPanel;
     public javax.swing.JTextField idField;
     private javax.swing.JLabel idLabel;
     private javax.swing.JPanel inputPanel;
